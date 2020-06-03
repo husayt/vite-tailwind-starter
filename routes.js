@@ -1,10 +1,14 @@
-import Home from './views/Home.vue'
-import About from './views/About.vue'
-import NotFound from './views/NotFound.vue'
+//todo import list from json or generate from file system
+const list = [
+  { path: "/", component: "Home", meta: { title: "Home" } },
+  { path: "/about", component: "About" },
+  { path: "/:path(.*)", component: "NotFound" },
+]
+
 
 /** @type {import('vue-router').RouterOptions['routes']} */
-export let routes = [
-  { path: '/', component: Home, meta: { title: 'Home' } },
-  { path: '/about', component: About, meta: { title: 'About' } },
-  { path: '/:path(.*)', component: NotFound },
-]
+export const routes = list.map(({ path, component, meta }) => ({
+  path,
+  component: () => import(`./views/${component}.vue`),
+  meta: meta || { title: component },
+}))

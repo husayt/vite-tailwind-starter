@@ -1,18 +1,18 @@
 <template>
   <div>
     <nav class="bg-gray-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0">
               <img
-                class="h-8 w-8"
+                class="w-8 h-8"
                 src="/img/logos/workflow-mark-on-dark.svg"
                 alt="Workflow logo"
               />
             </div>
             <div class="hidden md:block">
-              <div class="ml-10 flex items-baseline">
+              <div class="flex items-baseline ml-10">
                 <router-link
                   v-for="(link, i) in links"
                   :key="i"
@@ -22,27 +22,26 @@
                   <a
                     :href="href"
                     @click="navigate"
-                    class="px-3 py-2 rounded-md text-sm font-medium"
+                    class="px-3 py-2 text-sm font-medium rounded-md"
                     :class="[
                       isExactActive
                         ? 'text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700'
                         : 'text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700',
                       i > 0 && 'ml-4',
                     ]"
-                    >{{ link.text }}</a
-                  >
+                    >{{ link.text }}</a>
                 </router-link>
               </div>
             </div>
           </div>
           <div class="hidden md:block">
-            <div class="ml-4 flex items-center md:ml-6">
+            <div class="flex items-center ml-4 md:ml-6">
               <button
-                class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
+                class="p-1 text-gray-400 border-2 border-transparent rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
                 aria-label="Notifications"
               >
                 <svg
-                  class="h-6 w-6"
+                  class="w-6 h-6"
                   stroke="currentColor"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -57,17 +56,17 @@
               </button>
 
               <!-- Profile dropdown -->
-              <div class="ml-3 relative">
+              <div class="relative ml-3">
                 <div>
                   <button
-                    class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
+                    class="flex items-center max-w-xs text-sm text-white rounded-full focus:outline-none focus:shadow-solid"
                     id="user-menu"
                     aria-label="User menu"
                     aria-haspopup="true"
                     @click="showProfileMenu = !showProfileMenu"
                   >
                     <img
-                      class="h-8 w-8 rounded-full"
+                      class="w-8 h-8 rounded-full"
                       src="/img/person1.jpeg"
                       alt=""
                     />
@@ -75,19 +74,19 @@
                 </div>
 
                 <transition
-                  enter-active-class="transition ease-out duration-100"
-                  enter-from-class="transform opacity-0 scale-95"
-                  enter-to-class="transform opacity-100 scale-100"
-                  leave-active-class="transition ease-in duration-75"
-                  leave-from-class="transform opacity-100 scale-100"
-                  leave-to-class="transform opacity-0 scale-95"
+                  enter-active-class="transition duration-100 ease-out"
+                  enter-from-class="transform scale-95 opacity-0"
+                  enter-to-class="transform scale-100 opacity-100"
+                  leave-active-class="transition duration-75 ease-in"
+                  leave-from-class="transform scale-100 opacity-100"
+                  leave-to-class="transform scale-95 opacity-0"
                 >
                   <div
                     v-if="showProfileMenu"
-                    class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                    class="absolute right-0 w-48 mt-2 origin-top-right rounded-md shadow-lg"
                   >
                     <div
-                      class="py-1 rounded-md bg-white shadow-xs"
+                      class="py-1 bg-white rounded-md shadow-xs"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="user-menu"
@@ -96,20 +95,17 @@
                         href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
-                        >Your Profile</a
-                      >
+                        >Your Profile</a>
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
-                        >Settings</a
-                      >
+                        >Settings</a>
                       <a
                         href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         role="menuitem"
-                        >Sign out</a
-                      >
+                        >Sign out</a>
                     </div>
                   </div>
                 </transition>
@@ -117,15 +113,15 @@
             </div>
           </div>
 
-          <div class="-mr-2 flex md:hidden">
+          <div class="flex -mr-2 md:hidden">
             <!-- Mobile menu button -->
             <button
-              class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
+              class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white"
               @click="showMenu = !showMenu"
             >
               <!-- Menu open: "hidden", Menu closed: "block" -->
               <svg
-                class="block h-6 w-6"
+                class="block w-6 h-6"
                 stroke="currentColor"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -139,7 +135,7 @@
               </svg>
               <!-- Menu open: "block", Menu closed: "hidden" -->
               <svg
-                class="hidden h-6 w-6"
+                class="hidden w-6 h-6"
                 stroke="currentColor"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -172,22 +168,21 @@
             <a
               :href="href"
               @click="navigate().then(() => (showMenu = false))"
-              class="block px-3 py-2 rounded-md text-base font-medium"
+              class="block px-3 py-2 text-base font-medium rounded-md"
               :class="[
                 isExactActive
                   ? 'text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700'
                   : 'text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700',
                 i > 0 && 'mt-1',
               ]"
-              >{{ link.text }}</a
-            >
+              >{{ link.text }}</a>
           </router-link>
         </div>
         <div class="pt-4 pb-3 border-t border-gray-700">
           <div class="flex items-center px-5">
             <div class="flex-shrink-0">
               <img
-                class="h-10 w-10 rounded-full"
+                class="w-10 h-10 rounded-full"
                 src="/img/person1.jpeg"
                 alt=""
               />
@@ -201,29 +196,26 @@
               </div>
             </div>
           </div>
-          <div class="mt-3 px-2">
+          <div class="px-2 mt-3">
             <a
               href="#"
-              class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-              >Your Profile</a
-            >
+              class="block px-3 py-2 text-base font-medium text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >Your Profile</a>
             <a
               href="#"
-              class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-              >Settings</a
-            >
+              class="block px-3 py-2 mt-1 text-base font-medium text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >Settings</a>
             <a
               href="#"
-              class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-              >Sign out</a
-            >
+              class="block px-3 py-2 mt-1 text-base font-medium text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+              >Sign out</a>
           </div>
         </div>
       </div>
     </nav>
 
     <header class="bg-white shadow" v-if="$route.meta.title">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <h1 class="text-3xl font-bold leading-tight text-gray-900">
           {{ $route.meta.title }}
         </h1>
